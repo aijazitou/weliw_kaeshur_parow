@@ -323,6 +323,27 @@ p {
   padding: 10px;
 }
 
+/* Word rows: one item per horizontal line, each holding several words */
+.grid-container2 {
+  display: grid;
+  grid-template-columns: 1fr;             /* a single column, so one item per line */
+  gap: 0.15in;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.grid-container2-item {
+  display: block;
+  padding: 0.1in 0.35in;
+  border-radius: 40px;
+  font-size: 22pt;
+  line-height: 2.1;
+  text-align: justify;
+  text-align-last: justify;               /* stretches the last (only) line across the full width */
+  background-color: var(--background-color);
+  box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1);
+}
+
 /* Consonants table: 4 columns (2 on phones, see section 4) */
 .consonants {
   display: grid;
