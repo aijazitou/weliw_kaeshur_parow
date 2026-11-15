@@ -1,0 +1,467 @@
+/* ==========================================================================
+   1. ROOT VARIABLES & GLOBAL SETTINGS
+   Modify these values to quickly adjust colors, fonts, and spacing.
+   ========================================================================== */
+:root {
+  /* Colour palette: Dal Lake blue, saffron and chinar red on a cool, light page */
+  --text-color: #23304A;          /* Deep ink blue (softer than black) */
+  --muted-color: #8A97AB;         /* Soft grey-blue for borders/captions */
+  --accent-color: #C92A2A;        /* Chinar red, used for the cover title */
+  --box-bg: #D9F0F6;              /* Pale lake tint for callout boxes */
+  --site-bg: #E3EEF5;             /* Website background around the pages */
+  --background-color: #ffffff;    /* White for letter cards and grid items */
+  --card-color: #ffffff;          /* Letter cards: must match the white edges of the pictures */
+  --page-color: #F4F9FC;          /* Cool, very light page tone */
+  --cover-color: #FFF3CC;         /* Soft saffron tint for the cover */
+  --header-background-color: #d8d2fa; /* Lake blue header */
+  --footer-background-color: #DDF3E4; /* Golden chinar-leaf footer */
+  --question-color: #C92A2A;      /* Question text */
+  --answer-color: #1B7F4B;        /* Answer text */
+  --text-bg-color1:  #E6E3FA; 
+  --text-bg-color2:  #FBE0E3;
+  --text-bg-color3:  #f0acf9; 
+
+  
+  --font-size: 20px;
+
+  /* Page Dimensions & Margins (Print) */
+  --page-width: 7in;
+  --page-height: 10in;
+  --margin-top: 0.85in;
+  --margin-bottom: 0.85in;
+  --margin-outside: 0.65in;
+  --border-width: 0px;
+}
+
+/* ==========================================================================
+   2. BASE RTL & TYPOGRAPHY SETUP
+   ========================================================================== */
+html {
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+/* Load local Kashmiri Nastaleeq font */
+@font-face {
+  font-family: 'GulmargNastaleeq';
+  src: url('fonts/GulmargNastaleeq.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Exact page dimensions for printing / PDF export */
+@page {
+  size: 7in 10in;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'GulmargNastaleeq', serif;
+  background-color: var(--site-bg); 
+  font-size: var(--font-size);
+  word-spacing: 0.35em;
+  
+  display: flex;
+  flex-direction: column;   /* Stacks the pages vertically (top-to-bottom) */
+  align-items: center;      /* Keeps the stacked pages centered horizontally */
+  gap: 10px;                /* Adds physical space/gap between each page */
+  
+  padding: 20px 0;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+h1, h2, h3, h4 {
+  color: var(--accent-color);
+  font-weight: normal; /* Removes the default bolding */
+  line-height: 1.6;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+p {
+  margin-bottom: 1.1em; /* Generous vertical breathing room between paragraphs */
+}
+
+.cover-page {
+  width: 100%;             /* Fills the page, so it can shrink on phones */
+  height: 100%;            /* Fills the page height (10in on laptop/print) */
+  padding: 0 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers everything vertically */
+  align-items: center;     /* Centers everything horizontally */
+  gap: 2rem;               /* Clean spacing between elements */
+  background-color: var(--cover-color);
+  font-size: 120%;
+  
+  /* Crucial for making sure browsers don't strip background colors */
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* 7 x 10 inch Page Container (Dynamic Height for Drafting) */
+.page {
+  width: 100%;            /* Allows it to shrink on mobile */
+  max-width: 7in;         /* Caps it at 7 inches on laptops and print */
+  height: 10in;           
+  max-height: 10in;       
+  background-color: var(--page-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: var(--border-width) solid var(--muted-color);
+  box-shadow: 0 10px 25px rgba(35, 48, 74, 0.15);
+  overflow: hidden;       
+  box-sizing: border-box; /* Prevents padding/borders from breaking width */
+}
+
+
+/* --- 1. HEADER (1 inch tall, edge to edge) --- */
+.page-header {
+  width: 100%;
+  height: 1.2in;
+  border: var(--border-width) solid var(--muted-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers the group tightly together */
+  align-items: center;
+  gap: 0.5em; /* Controls the exact gap between top and bottom items safely */
+  padding: 0 0.25in;
+  overflow: hidden; /* Ensures nothing spills outside the box */
+  background-color: var(--header-background-color);
+  margin-bottom: 1.4em;
+}
+
+.header-top {
+  font-size: 15pt; /* Slightly scaled down to fit comfortably */
+  border: var(--border-width) solid var(--muted-color);
+  padding: 0 8px;
+  line-height: 1.2;
+  margin-bottom: 0; 
+}
+
+.header-bottom {
+  font-size: 32pt; /* Scaled down slightly to fit the height limit */
+  border: var(--border-width) solid var(--muted-color);
+  padding: 0 8px;
+  line-height: 1.2;
+}
+
+/* --- 2. MAIN (0.5 inch gap from edges, extra line height) --- */
+.page-main {
+  flex: 1;
+  margin: 0.0in 0.5in 0.5in 0.5in; 
+  border: var(--border-width) solid var(--muted-color);
+  padding: 0.0in;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3in;
+  font-size: var(--font-size);   
+  line-height: 2.4;  
+  
+  /* --- Overflow Management & Visual Warning --- */
+  overflow-y: auto;       /* Lets you scroll to read everything while drafting */
+  overflow-x: hidden;
+}
+
+.page-main::-webkit-scrollbar {
+  width: 8px;
+}
+.page-main::-webkit-scrollbar-thumb {
+  background-color: #ef4444; /* Bright red scrollbar means "Page is overfull!" */
+  border-radius: 4px;
+}
+
+.section1 {
+  border: var(--border-width) solid var(--muted-color);
+  padding: 0.0in;
+  flex: 1;
+  margin: 0
+}
+
+.section2 {
+  border: var(--border-width) solid var(--muted-color);
+  padding: 0.0in;
+  flex: 1;
+}
+
+.letters {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* 2 equal columns */
+  gap: 0.2in;                             /* space between boxes */
+  margin-top: 0.75in;
+  align-items: center;
+}
+
+.letter {
+  position: relative;                     /* the image is placed inside this box */
+  overflow: hidden;                       /* nothing sticks out of the rounded corners */
+  display: flex;
+  align-items: flex-start;                /* top of the box */
+  justify-content: flex-start;            /* right side in RTL */
+  height: 2.0in;
+  border: var(--border-width) solid var(--muted-color);
+  border-radius: 0.15in;
+  font-size: 24pt;
+  line-height: 1.0;
+  padding: 0.2in 0.2in 0 0;               /* top and right gap for the big letter */
+  background-color: var(--card-color); /* stays white: the pictures have white backgrounds */
+  z-index: 2;
+  box-shadow: 0 3px 3px rgba(35, 48, 74, 0.1);
+}
+
+.letter img {
+  position: absolute;
+  z-index: 1;             /* Keeps the image in the background layer */
+  top: 0.25in;                            /* gap between image and border */
+  right: 0.25in;
+  bottom: 0.25in;
+  left: 0.25in;
+  width: calc(100% - 0.5in);
+  height: calc(100% - 0.5in);
+  object-fit: contain;                    /* shrinks the picture to fit, keeping its proportions */
+  align-self:center
+  
+}
+
+.letter .word {
+  position: absolute;
+  bottom: 0.12in;                         /* distance from the bottom edge */
+  left: 0.15in;                           /* distance from the left edge */
+  font-size: 13pt;
+  line-height: 1.6;
+  color: var(--text-color);
+  z-index: 2;
+}
+
+.letter .char{
+  position: relative;
+  z-index: 2;             /* Forces the text to render above background layers or images */
+}
+
+.topics-list {
+  display: flex;
+  flex-direction: column;                 /* Stacks the items vertically */
+  gap: 0.2in;                             /* Vertical space between the boxes */
+  list-style: none;                       /* Removes default bullet points */
+  margin-top: 0.3in;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.topic-box {
+  background-color: var(--box-bg);        /* Default background color */
+  border: var(--border-width) solid var(--muted-color);
+  border-radius: 0.25in;                  /* Rounded corners */
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(35, 48, 74, 0.05);
+  width:100%
+}
+
+/* Make the link fill the whole box so the entire card is clickable */
+.topic-box a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  width: 100%;
+  display: block;
+}
+
+
+.grid-container {
+  display: grid;
+  /* Using 70px or 80px ensures about 3 to 4 columns fit on a standard phone screen,
+     while automatically expanding to more columns on wider laptop screens. */
+  grid-template-columns: repeat(auto-fit, minmax(75px, 1fr)); 
+  gap: 0.2rem;                            /* Changed from 0.2in to 0.2rem for better mobile scaling */
+  margin-top: 1rem;
+  align-items: center;
+  width: 100%;                            /* Ensures it takes the full width available */
+  box-sizing: border-box;                 /* Prevents padding from causing overflow */
+}
+
+.grid-container-item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;                           /* Converted from 0.6in to a fixed pixel/fluid height */
+  border: var(--border-width) solid var(--muted-color);
+  border-radius: 40px;                    /* Adjusted for smooth rounding */
+  font-size: 22pt;
+  line-height: 1.2;
+  background-color: var(--text-bg-color1);
+  z-index: 2;
+  padding: 10px;
+}
+
+/* Consonants table: 4 columns (2 on phones, see section 4) */
+.consonants {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.1in;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.consonant {
+  position: relative;                     /* the number badge is placed inside this box */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0.8in;                      /* grows if a box needs two lines */
+ /* padding: 0.2in 0.1in 0.05in 0.1in;      /* extra room at the top for the number */
+  border-radius: 0.15in;
+  font-size: 16pt;
+  line-height: 1.5;
+  text-align: center;
+  background-color: var(--text-bg-color2);
+  box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1);
+}
+
+.consonant .num {
+  position: absolute;
+  top: 0.06in;
+  right: 0.00in;                          /* right side, where RTL text starts */
+  width: 0.3in;
+  height: 0.3in;
+  border-radius: 50%;
+  background-color: var(--text-bg-color2);
+  color:#8A97AB;
+  font-size: 10pt;
+  line-height: 0.3in;
+  text-align: center;
+}
+
+
+/* Question Styling & Color */
+.question {
+  color: var(--question-color);
+  margin-bottom: 1em; /* Space between question and answer */
+  line-height: 2.4;
+}
+
+/* Answer Styling & Color */
+.answer {
+  color: var(--answer-color);
+  margin-bottom: 0;
+  line-height: 2.4;
+}
+
+/* --- 3. FOOTER (Book Name on right, Page Number centered) --- */
+.page-footer {
+  width: 100%;
+  height: 0.3in;
+  border: var(--border-width) solid var(--muted-color);
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 0.75in;
+  font-size: 10pt; 
+  background-color: var(--footer-background-color); /* Ensures text doesn't bleed behind it */
+  flex-shrink: 0;         /* Prevents footer from squishing */
+}
+
+.book-name {
+  border: var(--border-width) solid var(--muted-color);
+  padding: 2px 8px;
+}
+
+.page-number {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border: var(--border-width) solid var(--muted-color);
+  padding: 2px 12px;
+}
+
+/* --- Print Adjustments --- */
+@media print {
+  body {
+    background: none;
+    padding: 0;
+  }
+  .page {
+    border: none; /* Removes outer page border when printing onto physical paper */
+    height: 10in; /* Lock exact height back down for final print generation */
+    page-break-after: always;
+    break-after: page;
+  }
+}
+
+/* ==========================================================================
+   4. PHONE LAYOUT (screens only; laptop and print stay 7in x 10in)
+   ========================================================================== */
+@media screen and (max-width: 7.5in) {
+  body {
+    padding: 0;
+    gap: 8px;
+  }
+
+  /* Let each page grow with its content instead of a fixed 10in height */
+  .page {
+    height: auto;
+    max-height: none;
+    min-height: 100vh;
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .cover-page {
+    min-height: 100vh;
+  }
+  .cover-page h1 {
+    font-size: 2rem;
+  }
+
+  .page-header {
+    height: auto;
+    min-height: 1.2in;
+    padding: 0.4rem 1rem;
+    margin-bottom: 1rem;
+  }
+  .header-bottom {
+    font-size: 22pt;
+    text-align: center;
+  }
+
+  .page-main {
+    margin: 0 1rem 1rem 1rem;
+    overflow: visible;       /* no inner scrollbar on phones */
+  }
+
+  .letters {
+    gap: 0.12in;
+    margin-top: 0.2in;
+  }
+
+  .consonants {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Slightly smaller pictures on phones: bigger gap = smaller picture */
+  .letter img {
+    top: 0.4in;
+    right: 0.4in;
+    bottom: 0.4in;
+    left: 0.4in;
+    width: calc(100% - 0.8in);
+    height: calc(100% - 0.8in);
+  }
+
+  .page-footer {
+    padding: 0 1rem;
+  }
+}
