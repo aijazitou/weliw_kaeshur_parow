@@ -19,7 +19,7 @@
   --answer-color: #1B7F4B;        /* Answer text */
   --text-bg-color1:  #f2cdf7; 
   --text-bg-color2:  #f8ddca;
-  --text-bg-color3:  #e5f8ac; 
+  --text-bg-color3:  #d9b8f7; 
 
   
   --font-size: 20px;
@@ -340,8 +340,8 @@ p {
   line-height: 2.1;
   text-align: justify;
   text-align-last: justify;               /* stretches the last (only) line across the full width */
-  background-color: var(--background-color);
-  box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1);
+  background-color: var(--text-bg-color3);
+  box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1); 
 }
 
 /* Consonants table: 4 columns (2 on phones, see section 4) */
