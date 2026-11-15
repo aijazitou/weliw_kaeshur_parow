@@ -17,9 +17,9 @@
   --footer-background-color: #DDF3E4; /* Golden chinar-leaf footer */
   --question-color: #C92A2A;      /* Question text */
   --answer-color: #1B7F4B;        /* Answer text */
-  --text-bg-color1:  #E6E3FA; 
-  --text-bg-color2:  #FBE0E3;
-  --text-bg-color3:  #f0acf9; 
+  --text-bg-color1:  #f2cdf7; 
+  --text-bg-color2:  #f8ddca;
+  --text-bg-color3:  #e5f8ac; 
 
   
   --font-size: 20px;
@@ -307,6 +307,22 @@ p {
   padding: 10px;
 }
 
+.grid-container-item2 {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;                           /* Converted from 0.6in to a fixed pixel/fluid height */
+  border: var(--border-width) solid var(--muted-color);
+  border-radius: 40px;                    /* Adjusted for smooth rounding */
+  font-size: 22pt;
+  line-height: 1.2;
+  background-color: var(--text-bg-color2);
+  z-index: 2;
+  padding: 10px;
+}
+
 /* Consonants table: 4 columns (2 on phones, see section 4) */
 .consonants {
   display: grid;
@@ -385,6 +401,18 @@ p {
   transform: translateX(-50%);
   border: var(--border-width) solid var(--muted-color);
   padding: 2px 12px;
+}
+
+.link {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--muted-color);
+  border-radius: 5in;
+}
+
+.link a {
+  text-decoration: none
 }
 
 /* --- Print Adjustments --- */
