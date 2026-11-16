@@ -41,11 +41,27 @@ html {
   unicode-bidi: isolate;
 }
 
-/* Load local Kashmiri Nastaleeq font */
+/* Main book font */
 @font-face {
   font-family: 'GulmargNastaleeq';
   src: url('fonts/GulmargNastaleeq.ttf') format('truetype');
   font-weight: normal;
+  font-style: normal;
+}
+
+/* Secondary font for positional letter grids (Regular) */
+@font-face {
+  font-family: 'NotoNastaliqUrdu';
+  src: url('fonts/NotoNastaliqUrdu-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Secondary font for positional letter grids (Bold) */
+@font-face {
+  font-family: 'NotoNastaliqUrdu';
+  src: url('fonts/NotoNastaliqUrdu-Medium.ttf') format('truetype');
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -344,6 +360,34 @@ p {
   box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1); 
 }
 
+.positional-shapes {
+  display: grid;
+  grid-template-columns: 1fr;             /* a single column, so one item per line */
+  gap: 0.15in;
+  margin-top: 1rem;
+  width: 100%;
+}
+.positional-shapes-item {
+  display: block;
+  padding: 0.1in 0.35in;
+  border-radius: 40px;
+  font-size: 22pt;
+  line-height: 2.1;
+  text-align: justify;
+  text-align-last: justify;               /* stretches the last (only) line across the full width */
+  background-color: var(--text-bg-color3);
+  box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1); 
+
+  font-family: 'NotoNastaliqUrdu', serif;
+  font-weight: 700; /* Uses NotoNastaliqUrdu-Bold.ttf automatically */
+  line-height: 2.5;
+
+}
+
+
+
+
+
 /* Consonants table: 4 columns (2 on phones, see section 4) */
 .consonants {
   display: grid;
@@ -429,7 +473,8 @@ p {
   left: 50%;
   transform: translateX(-50%);
   background-color: var(--muted-color);
-  border-radius: 5in;
+  border-radius: 0.5in;
+  padding: 0pt 10pt; 
 }
 
 .link a {
