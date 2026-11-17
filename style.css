@@ -14,6 +14,7 @@
   --page-color: #F4F9FC;          /* Cool, very light page tone */
   --cover-color: #FFF3CC;         /* Soft saffron tint for the cover */
   --header-background-color: #d8d2fa; /* Lake blue header */
+  --link-background-color: #e26ef9;
   --footer-background-color: #DDF3E4; /* Golden chinar-leaf footer */
   --question-color: #C92A2A;      /* Question text */
   --answer-color: #1B7F4B;        /* Answer text */
@@ -471,7 +472,7 @@ p {
 .link {
   display: flex;
   justify-content: center;   /* centers the button horizontally */
-  background-color: var(--header-background-color);
+  background-color: var(--link-background-color);
   border-radius: 0.5in;
   box-shadow: 0 3px 6px rgba(35, 48, 74, 0.2);
   white-space: nowrap;                    /* keeps the Kashmiri label on one line */
