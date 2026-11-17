@@ -66,6 +66,13 @@ html {
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Narqalam';
+  src: url('fonts/Narqalam.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Exact page dimensions for printing / PDF export */
 @page {
   size: 7in 10in;
@@ -155,22 +162,26 @@ p {
   padding: 0 0.25in;
   overflow: hidden; /* Ensures nothing spills outside the box */
   background-color: var(--header-background-color);
-  margin-bottom: 1.4em;
+  margin-bottom: 2.5em;
+  font-family: 'GulmargNastaleeq', serif;
+  
 }
 
 .header-top {
-  font-size: 15pt; /* Slightly scaled down to fit comfortably */
+  font-size: 12pt; /* Slightly scaled down to fit comfortably */
   border: var(--border-width) solid var(--muted-color);
   padding: 0 8px;
   line-height: 1.2;
-  margin-bottom: 0; 
+  margin-bottom: 2;
+  font-family: 'GulmargNastaleeq', serif;
 }
 
 .header-bottom {
-  font-size: 32pt; /* Scaled down slightly to fit the height limit */
+  font-size: 24pt; /* Scaled down slightly to fit the height limit */
   border: var(--border-width) solid var(--muted-color);
   padding: 0 8px;
   line-height: 1.2;
+  font-family: 'GulmargNastaleeq', serif;
 }
 
 /* --- 2. MAIN (0.5 inch gap from edges, extra line height) --- */
