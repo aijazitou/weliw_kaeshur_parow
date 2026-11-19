@@ -168,10 +168,11 @@ p {
 }
 
 .header-top {
-  font-size: 12pt; /* Slightly scaled down to fit comfortably */
+  font-size: 16pt; /* Slightly scaled down to fit comfortably */
   border: var(--border-width) solid var(--muted-color);
   padding: 0 8px;
   line-height: 1.2;
+  margin-top: 0;
   margin-bottom: 2;
   font-family: 'GulmargNastaleeq', serif;
 }
@@ -182,6 +183,7 @@ p {
   padding: 0 8px;
   line-height: 1.2;
   font-family: 'GulmargNastaleeq', serif;
+  margin-top: 0.1in;
 }
 
 /* --- 2. MAIN (0.5 inch gap from edges, extra line height) --- */
@@ -374,14 +376,15 @@ p {
 
 .positional-shapes {
   display: grid;
-  grid-template-columns: 1fr;             /* a single column, so one item per line */
+  grid-template-columns: repeat(2, 1fr);  /* two items per row on laptops and in print */
   gap: 0.15in;
   margin-top: 1rem;
   width: 100%;
 }
+
 .positional-shapes-item {
   display: block;
-  padding: 0.1in 0.35in;
+  padding: 0.1in 0.2in;
   border-radius: 40px;
   font-size: 22pt;
   line-height: 2.1;
@@ -583,4 +586,9 @@ p {
   .page-footer {
     padding: 0 1rem;
   }
+  .positional-shapes {
+    grid-template-columns: 1fr;           /* one item per row on phones */
+  }
 }
+
+
