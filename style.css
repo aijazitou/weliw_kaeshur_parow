@@ -89,7 +89,7 @@ body {
   font-family: 'GulmargNastaleeq', serif;
   background-color: var(--site-bg); 
   font-size: var(--font-size);
-  word-spacing: 0.35em;
+  word-spacing: 0.2em;
   
   display: flex;
   flex-direction: column;   /* Stacks the pages vertically (top-to-bottom) */
@@ -305,7 +305,16 @@ p {
   color: var(--text-color);
   font-size: 1.1rem;
   width: 100%;
-  display: block;
+  display: flex;
+  justify-content: space-between;         /* Kashmiri on the right, English on the left */
+  align-items: center;
+  gap: 1rem;
+}
+
+.topic-en {
+  font-family: Arial, Helvetica, sans-serif;  /* the Kashmiri font has no English letters */
+  font-size: 0.9rem;
+  text-align: left;
 }
 
 
@@ -589,6 +598,16 @@ p {
   .positional-shapes {
     grid-template-columns: 1fr;           /* one item per row on phones */
   }
+
+  .topic-box a {
+    flex-direction: column;               /* English goes under the Kashmiri on narrow screens */
+    gap: 0.1rem;
+  }
+  .topic-en {
+    align-self: center;                 /* keeps the English on the left side */
+    word-spacing: 0em;
+  }
+
 }
 
 
