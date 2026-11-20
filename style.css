@@ -20,7 +20,8 @@
   --answer-color: #1B7F4B;        /* Answer text */
   --text-bg-color1:  #f2cdf7; 
   --text-bg-color2:  #f8ddca;
-  --text-bg-color3:  #d9b8f7; 
+  --text-bg-color3:  #d5aef9; 
+  --text-bg-color4:  #defca2; 
 
   
   --font-size: 20px;
@@ -409,9 +410,6 @@ p {
 }
 
 
-
-
-
 /* Consonants table: 4 columns (2 on phones, see section 4) */
 .sounds {
   display: grid;
@@ -430,15 +428,15 @@ p {
   justify-content: center;
   min-height: 0.8in;                      /* grows if a box needs two lines */
   border-radius: 0.15in;
-  font-size: 16pt;
+  font-size: 14pt;
   line-height: 1.5;
   text-align: center;
   box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1);
 }
 
 /* The only difference: the color */
-.sound  { background-color: var(--text-bg-color2); }
-.sound2 { background-color: var(--text-bg-color3); }
+.sound  { background-color: var(--text-bg-color3); }
+.sound2 { background-color: var(--text-bg-color4); }
 
 /* Number badge, shared */
 .sound .num,
