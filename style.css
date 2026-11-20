@@ -417,7 +417,7 @@ p {
 }
 
 
-/* Consonants table: 4 columns (2 on phones, see section 4) */
+/* Sounds table: 4 columns (2 on phones, see section 4) */
 .sounds {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -601,7 +601,7 @@ p {
     margin-top: 0.2in;
   }
 
-  .consonants {
+  .sounds {
     grid-template-columns: repeat(2, 1fr);
   }
 
