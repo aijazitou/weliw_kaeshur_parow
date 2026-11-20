@@ -413,7 +413,7 @@ p {
 
 
 /* Consonants table: 4 columns (2 on phones, see section 4) */
-.consonants {
+.sounds {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.1in;
@@ -421,30 +421,36 @@ p {
   width: 100%;
 }
 
-.consonant {
+/* Shared by both kinds of box */
+.sound,
+.sound2 {
   position: relative;                     /* the number badge is placed inside this box */
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 0.8in;                      /* grows if a box needs two lines */
- /* padding: 0.2in 0.1in 0.05in 0.1in;      /* extra room at the top for the number */
   border-radius: 0.15in;
   font-size: 16pt;
   line-height: 1.5;
   text-align: center;
-  background-color: var(--text-bg-color2);
   box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1);
 }
 
-.consonant .num {
+/* The only difference: the color */
+.sound  { background-color: var(--text-bg-color2); }
+.sound2 { background-color: var(--text-bg-color3); }
+
+/* Number badge, shared */
+.sound .num,
+.sound2 .num {
   position: absolute;
   top: 0.06in;
-  right: 0.00in;                          /* right side, where RTL text starts */
+  right: 0;                               /* right side, where RTL text starts */
   width: 0.3in;
   height: 0.3in;
   border-radius: 50%;
-  background-color: var(--text-bg-color2);
-  color:#8A97AB;
+  background-color: inherit;              /* takes the color of the box it sits in */
+  color: #8A97AB;
   font-size: 10pt;
   line-height: 0.3in;
   text-align: center;
