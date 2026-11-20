@@ -31,7 +31,7 @@
   --margin-top: 0.85in;
   --margin-bottom: 0.85in;
   --margin-outside: 0.65in;
-  --border-width: 1px;
+  --border-width: 0px;
 }
 
 /* ==========================================================================
@@ -532,6 +532,18 @@ p {
   }
 }
 
+.preface {
+  text-align: justify;
+  padding-top: 2em;
+  color: var(--answer-color);
+}
+
+.bold-text {
+
+  font-size: 1em;
+  color: var(--accent-color);
+}
+
 /* ==========================================================================
    4. PHONE LAYOUT (screens only; laptop and print stay 7in x 10in)
    ========================================================================== */
@@ -609,5 +621,4 @@ p {
   }
 
 }
-
 
