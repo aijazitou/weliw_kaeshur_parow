@@ -31,7 +31,7 @@
   --margin-top: 0.85in;
   --margin-bottom: 0.85in;
   --margin-outside: 0.65in;
-  --border-width: 0px;
+  --border-width: 1px;
 }
 
 /* ==========================================================================
@@ -194,7 +194,7 @@ p {
   padding: 0.0in;
   display: flex;
   flex-direction: column;
-  gap: 0.3in;
+  gap: 0.1in;
   font-size: var(--font-size);   
   line-height: 2.4;  
   
