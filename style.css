@@ -32,7 +32,7 @@
   --margin-top: 0.85in;
   --margin-bottom: 0.85in;
   --margin-outside: 0.65in;
-  --border-width: 0px;
+  --border-width: 1px;
 }
 
 /* ==========================================================================
@@ -111,8 +111,12 @@ h1, h2, h3, h4 {
   break-after: avoid;
 }
 
+h3 {
+  text-align: center;
+}
+
 p {
-  margin-bottom: 1.1em; /* Generous vertical breathing room between paragraphs */
+  margin-bottom: 0.0em; /* Generous vertical breathing room between paragraphs */ 
 }
 
 .cover-page {
@@ -147,6 +151,7 @@ p {
   box-shadow: 0 10px 25px rgba(35, 48, 74, 0.15);
   overflow: hidden;       
   box-sizing: border-box; /* Prevents padding/borders from breaking width */
+  gap: 1em;
 }
 
 
@@ -163,7 +168,7 @@ p {
   padding: 0 0.25in;
   overflow: hidden; /* Ensures nothing spills outside the box */
   background-color: var(--header-background-color);
-  margin-bottom: 2.5em;
+  margin-bottom: 1.0em;
   font-family: 'GulmargNastaleeq', serif;
   
 }
@@ -195,7 +200,7 @@ p {
   padding: 0.0in;
   display: flex;
   flex-direction: column;
-  gap: 0.1in;
+  gap: 0.0in;
   font-size: var(--font-size);   
   line-height: 2.4;  
   
@@ -214,15 +219,17 @@ p {
 
 .section1 {
   border: var(--border-width) solid var(--muted-color);
-  padding: 0.0in;
-  flex: 1;
-  margin: 0
+  padding: 0.05in;
+  flex: 0;
+  margin 1em 0em 0em 0em
 }
 
 .section2 {
   border: var(--border-width) solid var(--muted-color);
-  padding: 0.0in;
-  flex: 1;
+  padding: 0.05in;
+  flex: 0;
+  margin 1em 0em 0em 0em
+  
 }
 
 .letters {
@@ -414,7 +421,7 @@ p {
 .sounds {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.1in;
+  gap: 0.02in;
   margin-top: 1rem;
   width: 100%;
 }
@@ -577,7 +584,7 @@ p {
     height: auto;
     min-height: 1.2in;
     padding: 0.4rem 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
   .header-bottom {
     font-size: 22pt;
@@ -585,7 +592,7 @@ p {
   }
 
   .page-main {
-    margin: 0 1rem 1rem 1rem;
+    margin: 0 1rem 0rem 1rem;
     overflow: visible;       /* no inner scrollbar on phones */
   }
 
