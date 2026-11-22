@@ -116,7 +116,7 @@ h3 {
 }
 
 p {
-  margin-bottom: 0.0em; /* Generous vertical breathing room between paragraphs */ 
+  margin-bottom: 0em; /* Generous vertical breathing room between paragraphs */ 
 }
 
 .cover-page {
@@ -547,6 +547,10 @@ p {
   text-align: justify;
   padding-top: 2em;
   color: var(--answer-color);
+}
+
+.preface p {
+  margin-bottom: 2em; /* Generous vertical breathing room between paragraphs */ 
 }
 
 .bold-text {
