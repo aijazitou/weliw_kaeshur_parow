@@ -568,7 +568,7 @@ p {
 
 .preface {
   text-align: justify;
-  padding-top: 2em;
+  padding-top: 1.0em;
   color: var(--answer-color);
 }
 
