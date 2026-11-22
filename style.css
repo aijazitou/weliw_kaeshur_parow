@@ -3,26 +3,26 @@
    Modify these values to quickly adjust colors, fonts, and spacing.
    ========================================================================== */
 :root {
-  /* Colour palette: Dal Lake blue, saffron and chinar red on a cool, light page */
-  --text-color: #23304A;            /* Deep ink blue (softer than black) */
-  --muted-color: #8A97AB;           /* Soft grey-blue for borders/captions */
-  --accent-color: #C92A2A;          /* Chinar red, used for the cover title */
-  --box-bg: #D9F0F6;                /* Pale lake tint for callout boxes */
-  --site-bg: #E3EEF5;               /* Website background around the pages */
-  --background-color: #ffffff;      /* White for letter cards and grid items */
-  --card-color: #ffffff;            /* Letter cards: must match the white edges of the pictures */
-  --page-color: #F4F9FC;            /* Cool, very light page tone */
-  --cover-color: #FFF3CC;           /* Soft saffron tint for the cover */
-  --header-background-color: #d8d2fa; /* Lake blue header */
-  --link-background-color: #e26ef9;
-  --link-hover-color: #d14ae8;      /* Added: hover tint for .link */
-  --footer-background-color: #DDF3E4; /* Golden chinar-leaf footer */
-  --question-color: #C92A2A;        /* Question text */
-  --answer-color: #1B7F4B;          /* Answer text */
-  --text-bg-color1: #f2cdf7;
-  --text-bg-color2: #f8ddca;
-  --text-bg-color3: #d5aef9;
-  --text-bg-color4: #defca2;
+  /* Colour palette */
+  --text-color: #23304A;              /* Deep ink blue (softer than black) */
+  --muted-color: #8A97AB;             /* Soft grey-blue for borders/captions */
+  --accent-color: #C92A2A;            /* Chinar red, used for titles and bullets */
+  --box-bg: #D9F0F6;                  /* Pale lake tint for callout boxes */
+  --site-bg: #E3EEF5;                 /* Website background around the pages */
+  --background-color: #ffffff;        /* White */
+  --card-color: #ffffff;              /* Letter cards: must match the white edges of the pictures */
+  --page-color: #F4F9FC;              /* Cool, very light page tone */
+  --cover-color: #FFF3CC;             /* Soft saffron tint for the cover */
+  --header-background-color: #d8d2fa; /* Lavender header */
+  --footer-background-color: #DDF3E4; /* Mint footer */
+  --link-background-color: #e26ef9;   /* "Back to contents" button */
+  --link-hover-color: #cf55e8;        /* Button color when the mouse is over it */
+  --question-color: #C92A2A;          /* Question text */
+  --answer-color: #1B7F4B;            /* Answer text */
+  --text-bg-color1: #f2cdf7;          /* Pink: grid items */
+  --text-bg-color2: #f8ddca;          /* Peach: grid items 2 */
+  --text-bg-color3: #d5aef9;          /* Purple: word rows, shapes, sounds */
+  --text-bg-color4: #defca2;          /* Lime: sounds 2 */
 
   --font-size: 20px;
 
@@ -59,7 +59,7 @@ html {
   font-style: normal;
 }
 
-/* Secondary font for positional letter grids (Bold / 700) */
+/* Secondary font for positional letter grids (the Medium file is used for weight 700) */
 @font-face {
   font-family: 'NotoNastaliqUrdu';
   src: url('fonts/NotoNastaliqUrdu-Medium.ttf') format('truetype');
@@ -80,9 +80,7 @@ html {
   margin: 0;
 }
 
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -91,7 +89,6 @@ html {
 body {
   font-family: 'GulmargNastaleeq', serif;
   background-color: var(--site-bg);
-  color: var(--text-color);
   font-size: var(--font-size);
   word-spacing: 0.2em;
 
@@ -110,6 +107,7 @@ h1, h2, h3, h4, h5 {
   line-height: 1.6;
   margin-top: 0.1em;
   margin-bottom: 0.1em;
+  page-break-after: avoid;
   break-after: avoid;
 }
 
@@ -123,7 +121,7 @@ h5 {
 }
 
 p {
-  margin-bottom: 0.5em;     /* Generous vertical breathing room between paragraphs */
+  margin-bottom: 0.5em;     /* Breathing room between paragraphs */
 }
 
 .cover-page {
@@ -139,11 +137,12 @@ p {
   background-color: var(--cover-color);
   font-size: 200%;
 
+  /* Crucial for making sure browsers don't strip background colors */
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
 
-/* 7 x 10 inch Page Container (Dynamic Height for Drafting) */
+/* 7 x 10 inch Page Container */
 .page {
   width: 100%;              /* Allows it to shrink on mobile */
   max-width: 7in;           /* Caps it at 7 inches on laptops and print */
@@ -156,10 +155,11 @@ p {
   border: var(--border-width) solid var(--muted-color);
   box-shadow: 0 10px 25px rgba(35, 48, 74, 0.15);
   overflow: hidden;
+  box-sizing: border-box;   /* Prevents padding/borders from breaking width */
   gap: 1em;
 }
 
-/* --- 1. HEADER --- */
+/* --- 1. HEADER (1.2 inch tall, edge to edge) --- */
 .page-header {
   width: 100%;
   height: 1.2in;
@@ -168,7 +168,7 @@ p {
   flex-direction: column;
   justify-content: center;  /* Centers the group tightly together */
   align-items: center;
-  gap: 0.5em;               /* Controls the exact gap between top and bottom items safely */
+  gap: 0.5em;               /* Gap between top and bottom items */
   padding: 0 0.25in;
   overflow: hidden;         /* Ensures nothing spills outside the box */
   background-color: var(--header-background-color);
@@ -182,7 +182,7 @@ p {
   padding: 0 8px;
   line-height: 1.2;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 2px;
   font-family: 'GulmargNastaleeq', serif;
 }
 
@@ -215,13 +215,18 @@ p {
 .page-main::-webkit-scrollbar {
   width: 8px;
 }
-
 .page-main::-webkit-scrollbar-thumb {
   background-color: #ef4444; /* Bright red scrollbar means "Page is overfull!" */
   border-radius: 4px;
 }
 
-.section1,
+.section1 {
+  border: var(--border-width) solid var(--muted-color);
+  padding: 0.05in;
+  flex: 0;
+  margin: 1em 0 0 0;
+}
+
 .section2 {
   border: var(--border-width) solid var(--muted-color);
   padding: 0.05in;
@@ -229,6 +234,7 @@ p {
   margin: 1em 0 0 0;
 }
 
+/* --- Letter cards with pictures (alphabet pages) --- */
 .letters {
   display: grid;
   grid-template-columns: repeat(2, 1fr);  /* 2 equal columns */
@@ -282,6 +288,7 @@ p {
   z-index: 2;                             /* Forces the text to render above background layers or images */
 }
 
+/* --- Contents list (index page) --- */
 .topics-list {
   display: flex;
   flex-direction: column;                 /* Stacks the items vertically */
@@ -289,6 +296,7 @@ p {
   list-style: none;                       /* Removes default bullet points */
   margin-top: 0.3in;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .topic-box {
@@ -315,21 +323,39 @@ p {
 }
 
 .topic-en {
-  font-family: Arial, Helvetica, sans-serif; /* the Kashmiri font has no English letters */
+  font-family: Arial, Helvetica, sans-serif;  /* the Kashmiri font has no English letters */
   font-size: 0.9rem;
   text-align: left;
 }
 
+/* --- Rounded grids of single letters or pairs --- */
 .grid-container {
   display: grid;
+  /* 75px minimum width fits about 4 columns on a phone and more on a laptop */
   grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
   gap: 0.2rem;
   margin-top: 1rem;
   align-items: center;
   width: 100%;
+  box-sizing: border-box;
 }
 
-.grid-container-item,
+.grid-container-item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+  border: var(--border-width) solid var(--muted-color);
+  border-radius: 40px;
+  font-size: 22pt;
+  line-height: 1.2;
+  background-color: var(--text-bg-color1);
+  z-index: 2;
+  padding: 10px;
+}
+
 .grid-container-item2 {
   position: relative;
   overflow: hidden;
@@ -341,19 +367,12 @@ p {
   border-radius: 40px;
   font-size: 22pt;
   line-height: 1.2;
+  background-color: var(--text-bg-color2);
   z-index: 2;
   padding: 10px;
 }
 
-.grid-container-item {
-  background-color: var(--text-bg-color1);
-}
-
-.grid-container-item2 {
-  background-color: var(--text-bg-color2);
-}
-
-/* Word rows: one item per horizontal line, each holding several words */
+/* --- Word rows: one item per horizontal line, each holding several words --- */
 .grid-container2 {
   display: grid;
   grid-template-columns: 1fr;             /* a single column, so one item per line */
@@ -374,6 +393,7 @@ p {
   box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1);
 }
 
+/* --- Letter shapes (isolated, initial, medial, final) --- */
 .positional-shapes {
   display: grid;
   grid-template-columns: repeat(2, 1fr);  /* two items per row on laptops and in print */
@@ -387,18 +407,19 @@ p {
   padding: 0.1in 0.2in;
   border-radius: 40px;
   font-size: 18pt;
-  line-height: 2.0;
+  line-height: 1.6;
   text-align: justify;
-  text-align-last: justify;
+  text-align-last: justify;               /* stretches the last (only) line across the full width */
   background-color: var(--text-bg-color3);
   box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1);
 
   font-family: 'NotoNastaliqUrdu', serif;
-  font-weight: 700;
+  font-weight: 700;                       /* uses NotoNastaliqUrdu-Medium.ttf (mapped to weight 700) */
 }
 
-/* Sounds table: boxes are as wide as their letters, wrap onto new lines,
-   and stretch so every row reaches both edges. */
+/* --- Sounds table: boxes are as wide as their letters, wrap onto new lines,
+       and stretch so every row reaches both edges.
+       Phones need no special rule, because the boxes wrap on their own. --- */
 .sounds {
   display: flex;
   flex-wrap: wrap;                        /* a box moves to the next line when the row is full */
@@ -408,6 +429,7 @@ p {
   width: 100%;
 }
 
+/* Shared by both kinds of box */
 .sound,
 .sound2 {
   position: relative;                     /* the number badge is placed inside this box */
@@ -429,6 +451,7 @@ p {
   padding: 0.1in 0.4in 0 0.25in;
 }
 
+/* The only difference: the color */
 .sound  { background-color: var(--text-bg-color3); }
 .sound2 { background-color: var(--text-bg-color4); }
 
@@ -448,7 +471,15 @@ p {
   text-align: center;
 }
 
-/* Question & Answer Styling */
+/* Optional: keeps the last row's boxes close to their normal size.
+   Remove the comment marks if the last row looks too stretched.
+.sounds::after {
+  content: "";
+  flex-grow: 1000;
+}
+*/
+
+/* --- Question and answer --- */
 .question {
   color: var(--question-color);
   margin-top: 1em;
@@ -473,7 +504,7 @@ p {
   padding: 0 0.75in;
   font-size: 10pt;
   background-color: var(--footer-background-color);
-  flex-shrink: 0;
+  flex-shrink: 0;                         /* Prevents footer from squishing */
 }
 
 .book-name {
@@ -489,19 +520,21 @@ p {
   padding: 2px 12px;
 }
 
+/* --- "Back to contents" button --- */
 .link {
   display: flex;
-  justify-content: center;
+  width: fit-content;                     /* only as wide as the label plus padding */
+  margin: 0 auto;                         /* centers the button on the page */
   background-color: var(--link-background-color);
   border-radius: 0.5in;
   box-shadow: 0 3px 6px rgba(35, 48, 74, 0.2);
-  white-space: nowrap;
+  white-space: nowrap;                    /* keeps the Kashmiri label on one line */
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   padding-top: 3px;
 }
 
 .link a {
-  display: block;
+  display: block;                         /* the whole pill is clickable, not just the text */
   padding: 0 10pt;
   text-decoration: none;
   color: var(--text-color);
@@ -510,9 +543,10 @@ p {
 .link:hover {
   background-color: var(--link-hover-color);
   box-shadow: 0 6px 12px rgba(35, 48, 74, 0.3);
-  transform: translateY(-2px);
+  transform: translateY(-2px);            /* lifts the button slightly */
 }
 
+/* --- Preface and text blocks --- */
 .preface {
   text-align: justify;
   padding-top: 1.0em;
@@ -520,7 +554,7 @@ p {
 }
 
 .preface p {
-  margin-bottom: 2em;
+  margin-bottom: 2em;                     /* Breathing room between paragraphs */
 }
 
 .bold-text {
@@ -543,29 +577,29 @@ p {
   font-size: 16pt;
   line-height: 2.0;
   text-align: justify;
-  text-align-last: justify;
+  text-align-last: justify;               /* stretches the last (only) line across the full width */
   background-color: var(--text-bg-color3);
   box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1);
-  font-family: 'GulmargNastaleeq', serif;
+  font-family: 'GulmargNastaleeq';
 }
 
 .generic-list {
-  list-style: circle;
-  padding-inline-start: 0.4in;
-  margin: 0.1in 0;
+  list-style: circle;                     /* bullet points */
+  padding-inline-start: 0.4in;            /* room for the bullets (the right side in RTL) */
+  margin: 0.1in 0 0 0;
 }
 
 .generic-list li {
-  margin-bottom: 0.15in;
+  margin-bottom: 0.15in;                  /* space between items */
   line-height: 2.0;
 }
 
 .generic-list li::marker {
-  color: var(--accent-color);
+  color: var(--accent-color);             /* chinar red bullets */
 }
 
 .generic-list li p {
-  margin-bottom: 0;
+  margin-bottom: 0;                       /* if an item contains a <p>, don't add extra space */
 }
 
 /* --- Print Adjustments --- */
@@ -574,16 +608,17 @@ p {
     background: none;
     padding: 0;
   }
-
   .page {
-    border: none;
-    height: 10in;
+    border: none;                         /* Removes outer page border when printing onto physical paper */
+    height: 10in;                         /* Lock exact height back down for final print generation */
+    page-break-after: always;
     break-after: page;
   }
 }
 
 /* ==========================================================================
    4. PHONE LAYOUT (screens only; laptop and print stay 7in x 10in)
+   Keep this section last, so it overrides the rules above.
    ========================================================================== */
 @media screen and (max-width: 7.5in) {
   body {
@@ -591,6 +626,7 @@ p {
     gap: 8px;
   }
 
+  /* Let each page grow with its content instead of a fixed 10in height */
   .page {
     height: auto;
     max-height: none;
@@ -602,7 +638,6 @@ p {
   .cover-page {
     min-height: 100vh;
   }
-
   .cover-page h1 {
     font-size: 2rem;
   }
@@ -613,7 +648,6 @@ p {
     padding: 0.4rem 1rem;
     margin-bottom: 2rem;
   }
-
   .header-bottom {
     font-size: 22pt;
     text-align: center;
@@ -621,7 +655,7 @@ p {
 
   .page-main {
     margin: 0 1rem 0 1rem;
-    overflow: visible;
+    overflow: visible;                    /* no inner scrollbar on phones */
   }
 
   .letters {
@@ -629,6 +663,7 @@ p {
     margin-top: 0.2in;
   }
 
+  /* Slightly smaller pictures on phones: bigger gap = smaller picture */
   .letter img {
     top: 0.4in;
     right: 0.4in;
@@ -642,18 +677,20 @@ p {
     padding: 0 1rem;
   }
 
-  .positional-shapes,
+  .positional-shapes {
+    grid-template-columns: 1fr;           /* one item per row on phones */
+  }
+
   .du-ceshim {
     grid-template-columns: 1fr;           /* one item per row on phones */
   }
 
   .topic-box a {
-    flex-direction: column;
+    flex-direction: column;               /* English goes under the Kashmiri on narrow screens */
     gap: 0.1rem;
   }
-
   .topic-en {
-    align-self: center;
-    word-spacing: 0em;
+    align-self: center;                   /* English is centered under the Kashmiri on phones */
+    word-spacing: 0;
   }
 }
