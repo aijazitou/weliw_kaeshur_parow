@@ -399,7 +399,7 @@ p {
 .positional-shapes {
   display: grid;
   grid-template-columns: repeat(2, 1fr);  /* two items per row on laptops and in print */
-  gap: 0.1in;
+  gap: 0.05in;
   margin-top: 1rem;
   width: 100%;
 }
@@ -409,7 +409,7 @@ p {
   padding: 0.1in 0.2in;
   border-radius: 40px;
   font-size: 18pt;
-  line-height: 2.1;
+  line-height: 2.0;
   text-align: justify;
   text-align-last: justify;               /* stretches the last (only) line across the full width */
   background-color: var(--text-bg-color3);
