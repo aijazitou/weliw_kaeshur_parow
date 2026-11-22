@@ -399,7 +399,7 @@ p {
 .positional-shapes {
   display: grid;
   grid-template-columns: repeat(2, 1fr);  /* two items per row on laptops and in print */
-  gap: 0.15in;
+  gap: 0.1in;
   margin-top: 1rem;
   width: 100%;
 }
@@ -408,7 +408,7 @@ p {
   display: block;
   padding: 0.1in 0.2in;
   border-radius: 40px;
-  font-size: 22pt;
+  font-size: 18pt;
   line-height: 2.1;
   text-align: justify;
   text-align-last: justify;               /* stretches the last (only) line across the full width */
@@ -417,7 +417,7 @@ p {
 
   font-family: 'NotoNastaliqUrdu', serif;
   font-weight: 700; /* Uses NotoNastaliqUrdu-Bold.ttf automatically */
-  line-height: 2.5;
+  line-height: 1.6;
 
 }
 
