@@ -220,19 +220,6 @@ p {
   border-radius: 4px;
 }
 
-.section1 {
-  border: var(--border-width) solid var(--muted-color);
-  padding: 0.05in;
-  flex: 0;
-  margin: 0.5em 0 0 0;
-}
-
-.section2 {
-  border: var(--border-width) solid var(--muted-color);
-  padding: 0.05in;
-  flex: 0;
-  margin: 0.5em 0 0 0;
-}
 
 /* --- Letter cards with pictures (alphabet pages) --- */
 .letters {
