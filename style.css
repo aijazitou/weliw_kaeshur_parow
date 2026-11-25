@@ -3,25 +3,27 @@
    Modify these values to quickly adjust colors, fonts, and spacing.
    ========================================================================== */
 :root {
-  /* Colour palette: Dal Lake blue, saffron and chinar red on a cool, light page */
-  --text-color: #23304A;          /* Deep ink blue (softer than black) */
-  --muted-color: #8A97AB;         /* Soft grey-blue for borders/captions */
-  --accent-color: #C92A2A;        /* Chinar red, used for the cover title */
-  --box-bg: #D9F0F6;              /* Pale lake tint for callout boxes */
-  --site-bg: #E3EEF5;             /* Website background around the pages */
-  --background-color: #ffffff;    /* White for letter cards and grid items */
-  --card-color: #ffffff;          /* Letter cards: must match the white edges of the pictures */
-  --page-color: #F4F9FC;          /* Cool, very light page tone */
-  --cover-color: #FFF3CC;         /* Soft saffron tint for the cover */
-  --header-background-color: #d8d2fa; /* Lake blue header */
-  --footer-background-color: #DDF3E4; /* Golden chinar-leaf footer */
-  --question-color: #C92A2A;      /* Question text */
-  --answer-color: #1B7F4B;        /* Answer text */
-  --text-bg-color1:  #E6E3FA; 
-  --text-bg-color2:  #FBE0E3;
-  --text-bg-color3:  #f0acf9; 
+  /* Colour palette */
+  --text-color: #23304A;              /* Deep ink blue (softer than black) */
+  --muted-color: #8A97AB;             /* Soft grey-blue for borders/captions */
+  --accent-color: #C92A2A;            /* Chinar red, used for titles and bullets */
+  --box-bg: #D9F0F6;                  /* Pale lake tint for callout boxes */
+  --site-bg: #E3EEF5;                 /* Website background around the pages */
+  --background-color: #ffffff;        /* White */
+  --card-color: #ffffff;              /* Letter cards: must match the white edges of the pictures */
+  --page-color: #F4F9FC;              /* Cool, very light page tone */
+  --cover-color: #FFF3CC;             /* Soft saffron tint for the cover */
+  --header-background-color: #d8d2fa; /* Lavender header */
+  --footer-background-color: #DDF3E4; /* Mint footer */
+  --link-background-color: #e26ef9;   /* "Back to contents" button */
+  --link-hover-color: #cf55e8;        /* Button color when the mouse is over it */
+  --question-color: #C92A2A;          /* Question text */
+  --answer-color: #1B7F4B;            /* Answer text */
+  --text-bg-color1: #f2cdf7;          /* Pink: grid items */
+  --text-bg-color2: #f8ddca;          /* Peach: grid items 2 */
+  --text-bg-color3: #d5aef9;          /* Purple: word rows, shapes, sounds */
+  --text-bg-color4: #defca2;          /* Lime: sounds 2 */
 
-  
   --font-size: 20px;
 
   /* Page Dimensions & Margins (Print) */
@@ -41,10 +43,33 @@ html {
   unicode-bidi: isolate;
 }
 
-/* Load local Kashmiri Nastaleeq font */
+/* Main book font */
 @font-face {
   font-family: 'GulmargNastaleeq';
   src: url('fonts/GulmargNastaleeq.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Secondary font for positional letter grids (Regular) */
+@font-face {
+  font-family: 'NotoNastaliqUrdu';
+  src: url('fonts/NotoNastaliqUrdu-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Secondary font for positional letter grids (the Medium file is used for weight 700) */
+@font-face {
+  font-family: 'NotoNastaliqUrdu';
+  src: url('fonts/NotoNastaliqUrdu-Medium.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Narqalam';
+  src: url('fonts/Narqalam.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -63,22 +88,22 @@ html {
 
 body {
   font-family: 'GulmargNastaleeq', serif;
-  background-color: var(--site-bg); 
+  background-color: var(--site-bg);
   font-size: var(--font-size);
-  word-spacing: 0.35em;
-  
+  word-spacing: 0.2em;
+
   display: flex;
   flex-direction: column;   /* Stacks the pages vertically (top-to-bottom) */
   align-items: center;      /* Keeps the stacked pages centered horizontally */
   gap: 10px;                /* Adds physical space/gap between each page */
-  
+
   padding: 20px 0;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   color: var(--accent-color);
-  font-weight: normal; /* Removes the default bolding */
+  font-weight: normal;      /* Removes the default bolding */
   line-height: 1.6;
   margin-top: 0.1em;
   margin-bottom: 0.1em;
@@ -86,90 +111,104 @@ h1, h2, h3, h4 {
   break-after: avoid;
 }
 
+h3 {
+  text-align: center;
+}
+
+h5 {
+  color: #03a6e6;
+  font-size: 1.1em;
+}
+
 p {
-  margin-bottom: 1.1em; /* Generous vertical breathing room between paragraphs */
+  margin-bottom: 0.5em;     /* Breathing room between paragraphs */
 }
 
 .cover-page {
-  width: 100%;             /* Fills the page, so it can shrink on phones */
-  height: 100%;            /* Fills the page height (10in on laptop/print) */
+  width: 100%;              /* Fills the page, so it can shrink on phones */
+  height: 100%;             /* Fills the page height (10in on laptop/print) */
   padding: 0 1rem;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centers everything vertically */
-  align-items: center;     /* Centers everything horizontally */
-  gap: 2rem;               /* Clean spacing between elements */
+  justify-content: center;  /* Centers everything vertically */
+  align-items: center;      /* Centers everything horizontally */
+  gap: 2rem;                /* Clean spacing between elements */
   background-color: var(--cover-color);
-  font-size: 120%;
-  
+  font-size: 200%;
+
   /* Crucial for making sure browsers don't strip background colors */
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
 
-/* 7 x 10 inch Page Container (Dynamic Height for Drafting) */
+/* 7 x 10 inch Page Container */
 .page {
-  width: 100%;            /* Allows it to shrink on mobile */
-  max-width: 7in;         /* Caps it at 7 inches on laptops and print */
-  height: 10in;           
-  max-height: 10in;       
+  width: 100%;              /* Allows it to shrink on mobile */
+  max-width: 7in;           /* Caps it at 7 inches on laptops and print */
+  height: 10in;
+  max-height: 10in;
   background-color: var(--page-color);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: var(--border-width) solid var(--muted-color);
   box-shadow: 0 10px 25px rgba(35, 48, 74, 0.15);
-  overflow: hidden;       
-  box-sizing: border-box; /* Prevents padding/borders from breaking width */
+  overflow: hidden;
+  box-sizing: border-box;   /* Prevents padding/borders from breaking width */
+  gap: 1em;
 }
 
-
-/* --- 1. HEADER (1 inch tall, edge to edge) --- */
+/* --- 1. HEADER (1.2 inch tall, edge to edge) --- */
 .page-header {
   width: 100%;
   height: 1.2in;
   border: var(--border-width) solid var(--muted-color);
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centers the group tightly together */
+  justify-content: center;  /* Centers the group tightly together */
   align-items: center;
-  gap: 0.5em; /* Controls the exact gap between top and bottom items safely */
+  gap: 0.5em;               /* Gap between top and bottom items */
   padding: 0 0.25in;
-  overflow: hidden; /* Ensures nothing spills outside the box */
+  overflow: hidden;         /* Ensures nothing spills outside the box */
   background-color: var(--header-background-color);
-  margin-bottom: 1.4em;
+  margin-bottom: 1.0em;
+  font-family: 'GulmargNastaleeq', serif;
 }
 
 .header-top {
-  font-size: 15pt; /* Slightly scaled down to fit comfortably */
+  font-size: 16pt;
   border: var(--border-width) solid var(--muted-color);
   padding: 0 8px;
   line-height: 1.2;
-  margin-bottom: 0; 
+  margin-top: 0;
+  margin-bottom: 2px;
+  font-family: 'GulmargNastaleeq', serif;
 }
 
 .header-bottom {
-  font-size: 32pt; /* Scaled down slightly to fit the height limit */
+  font-size: 24pt;
   border: var(--border-width) solid var(--muted-color);
   padding: 0 8px;
   line-height: 1.2;
+  font-family: 'GulmargNastaleeq', serif;
+  margin-top: 0.1in;
 }
 
 /* --- 2. MAIN (0.5 inch gap from edges, extra line height) --- */
 .page-main {
   flex: 1;
-  margin: 0.0in 0.5in 0.5in 0.5in; 
+  margin: 0.0in 0.5in 0.1in 0.5in;
   border: var(--border-width) solid var(--muted-color);
   padding: 0.0in;
   display: flex;
   flex-direction: column;
-  gap: 0.3in;
-  font-size: var(--font-size);   
-  line-height: 2.4;  
-  
+  gap: 0.0in;
+  font-size: var(--font-size);
+  line-height: 2.4;
+
   /* --- Overflow Management & Visual Warning --- */
-  overflow-y: auto;       /* Lets you scroll to read everything while drafting */
+  overflow-y: auto;         /* Lets you scroll to read everything while drafting */
   overflow-x: hidden;
 }
 
@@ -181,19 +220,8 @@ p {
   border-radius: 4px;
 }
 
-.section1 {
-  border: var(--border-width) solid var(--muted-color);
-  padding: 0.0in;
-  flex: 1;
-  margin: 0
-}
 
-.section2 {
-  border: var(--border-width) solid var(--muted-color);
-  padding: 0.0in;
-  flex: 1;
-}
-
+/* --- Letter cards with pictures (alphabet pages) --- */
 .letters {
   display: grid;
   grid-template-columns: repeat(2, 1fr);  /* 2 equal columns */
@@ -214,14 +242,14 @@ p {
   font-size: 24pt;
   line-height: 1.0;
   padding: 0.2in 0.2in 0 0;               /* top and right gap for the big letter */
-  background-color: var(--card-color); /* stays white: the pictures have white backgrounds */
+  background-color: var(--card-color);    /* stays white: the pictures have white backgrounds */
   z-index: 2;
   box-shadow: 0 3px 3px rgba(35, 48, 74, 0.1);
 }
 
 .letter img {
   position: absolute;
-  z-index: 1;             /* Keeps the image in the background layer */
+  z-index: 1;                             /* Keeps the image in the background layer */
   top: 0.25in;                            /* gap between image and border */
   right: 0.25in;
   bottom: 0.25in;
@@ -229,8 +257,7 @@ p {
   width: calc(100% - 0.5in);
   height: calc(100% - 0.5in);
   object-fit: contain;                    /* shrinks the picture to fit, keeping its proportions */
-  align-self:center
-  
+  align-self: center;
 }
 
 .letter .word {
@@ -243,11 +270,12 @@ p {
   z-index: 2;
 }
 
-.letter .char{
+.letter .char {
   position: relative;
-  z-index: 2;             /* Forces the text to render above background layers or images */
+  z-index: 2;                             /* Forces the text to render above background layers or images */
 }
 
+/* --- Contents list (index page) --- */
 .topics-list {
   display: flex;
   flex-direction: column;                 /* Stacks the items vertically */
@@ -266,7 +294,7 @@ p {
   display: flex;
   align-items: center;
   box-shadow: 0 2px 5px rgba(35, 48, 74, 0.05);
-  width:100%
+  width: 100%;
 }
 
 /* Make the link fill the whole box so the entire card is clickable */
@@ -275,20 +303,28 @@ p {
   color: var(--text-color);
   font-size: 1.1rem;
   width: 100%;
-  display: block;
+  display: flex;
+  justify-content: space-between;         /* Kashmiri on the right, English on the left */
+  align-items: center;
+  gap: 1rem;
 }
 
+.topic-en {
+  font-family: Arial, Helvetica, sans-serif;  /* the Kashmiri font has no English letters */
+  font-size: 0.9rem;
+  text-align: left;
+}
 
+/* --- Rounded grids of single letters or pairs --- */
 .grid-container {
   display: grid;
-  /* Using 70px or 80px ensures about 3 to 4 columns fit on a standard phone screen,
-     while automatically expanding to more columns on wider laptop screens. */
-  grid-template-columns: repeat(auto-fit, minmax(75px, 1fr)); 
-  gap: 0.2rem;                            /* Changed from 0.2in to 0.2rem for better mobile scaling */
+  /* 75px minimum width fits about 4 columns on a phone and more on a laptop */
+  grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+  gap: 0.2rem;
   margin-top: 1rem;
   align-items: center;
-  width: 100%;                            /* Ensures it takes the full width available */
-  box-sizing: border-box;                 /* Prevents padding from causing overflow */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .grid-container-item {
@@ -297,9 +333,9 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 75px;                           /* Converted from 0.6in to a fixed pixel/fluid height */
+  height: 75px;
   border: var(--border-width) solid var(--muted-color);
-  border-radius: 40px;                    /* Adjusted for smooth rounding */
+  border-radius: 40px;
   font-size: 22pt;
   line-height: 1.2;
   background-color: var(--text-bg-color1);
@@ -307,76 +343,162 @@ p {
   padding: 10px;
 }
 
-/* Consonants table: 4 columns (2 on phones, see section 4) */
-.consonants {
+.grid-container-item2 {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+  border: var(--border-width) solid var(--muted-color);
+  border-radius: 40px;
+  font-size: 22pt;
+  line-height: 1.2;
+  background-color: var(--text-bg-color2);
+  z-index: 2;
+  padding: 10px;
+}
+
+/* --- Word rows: one item per horizontal line, each holding several words --- */
+.grid-container2 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.1in;
+  grid-template-columns: 1fr;             /* a single column, so one item per line */
+  gap: 0.15in;
   margin-top: 1rem;
   width: 100%;
 }
 
-.consonant {
+.grid-container2-item {
+  display: block;
+  padding: 0.1in 0.35in;
+  border-radius: 40px;
+  font-size: 22pt;
+  line-height: 2.1;
+  text-align: justify;
+  text-align-last: justify;               /* stretches the last (only) line across the full width */
+  background-color: var(--text-bg-color3);
+  box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1);
+}
+
+/* --- Letter shapes (isolated, initial, medial, final) --- */
+.positional-shapes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* two items per row on laptops and in print */
+  gap: 0.05in;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.positional-shapes-item {
+  display: block;
+  padding: 0.1in 0.2in;
+  border-radius: 40px;
+  font-size: 18pt;
+  line-height: 1.6;
+  text-align: justify;
+  text-align-last: justify;               /* stretches the last (only) line across the full width */
+  background-color: var(--text-bg-color3);
+  box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1);
+
+  font-family: 'NotoNastaliqUrdu', serif;
+  font-weight: 700;                       /* uses NotoNastaliqUrdu-Medium.ttf (mapped to weight 700) */
+}
+
+/* --- Sounds table: boxes are as wide as their letters, wrap onto new lines,
+       and stretch so every row reaches both edges.
+       Phones need no special rule, because the boxes wrap on their own. --- */
+.sounds {
+  display: flex;
+  flex-wrap: wrap;                        /* a box moves to the next line when the row is full */
+  gap: 0.08in;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+/* Shared by both kinds of box */
+.sound,
+.sound2 {
   position: relative;                     /* the number badge is placed inside this box */
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-grow: 1;                           /* boxes share the free space, so each row reaches both edges */
+  min-width: 0.8in;                       /* keeps single-letter boxes from being too narrow */
   min-height: 0.8in;                      /* grows if a box needs two lines */
- /* padding: 0.2in 0.1in 0.05in 0.1in;      /* extra room at the top for the number */
+  padding: 0.1in 0.25in 0 0.25in;         /* space around the letters; extra at the top for the number */
   border-radius: 0.15in;
-  font-size: 16pt;
+  font-size: 14pt;
   line-height: 1.5;
   text-align: center;
-  background-color: var(--text-bg-color2);
   box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1);
 }
 
-.consonant .num {
+.sound2 {
+  padding: 0.1in 0.4in 0 0.25in;
+}
+
+/* The only difference: the color */
+.sound  { background-color: var(--text-bg-color3); }
+.sound2 { background-color: var(--text-bg-color4); }
+
+/* Number badge, shared */
+.sound .num,
+.sound2 .num {
   position: absolute;
   top: 0.06in;
-  right: 0.00in;                          /* right side, where RTL text starts */
+  right: 0;                               /* right side, where RTL text starts */
   width: 0.3in;
   height: 0.3in;
   border-radius: 50%;
-  background-color: var(--text-bg-color2);
-  color:#8A97AB;
+  background-color: inherit;              /* takes the color of the box it sits in */
+  color: #8A97AB;
   font-size: 10pt;
   line-height: 0.3in;
   text-align: center;
 }
 
+/* Optional: keeps the last row's boxes close to their normal size.
+   Remove the comment marks if the last row looks too stretched.
+.sounds::after {
+  content: "";
+  flex-grow: 1000;
+}
+*/
 
-/* Question Styling & Color */
+/* --- Question and answer --- */
 .question {
   color: var(--question-color);
-  margin-bottom: 1em; /* Space between question and answer */
-  line-height: 2.4;
+  margin-top: 1em;
+  margin-bottom: 0;
+  line-height: 1.6;
+  padding: 0.0em 0.2em;
 }
 
-/* Answer Styling & Color */
 .answer {
   color: var(--answer-color);
   margin-bottom: 0;
   line-height: 2.4;
+  padding: 0.0em 0.2em;
 }
 
 /* --- 3. FOOTER (Book Name on right, Page Number centered) --- */
 .page-footer {
   width: 100%;
-  height: 0.3in;
+  height: 0.4in;
   border: var(--border-width) solid var(--muted-color);
   position: relative;
   display: flex;
   align-items: center;
   padding: 0 0.75in;
-  font-size: 10pt; 
-  background-color: var(--footer-background-color); /* Ensures text doesn't bleed behind it */
-  flex-shrink: 0;         /* Prevents footer from squishing */
+  font-size: 10pt;
+  background-color: var(--footer-background-color);
+  flex-shrink: 0;                         /* Prevents footer from squishing */
 }
 
 .book-name {
   border: var(--border-width) solid var(--muted-color);
-  padding: 2px 8px;
+  padding: 2px 10px;
 }
 
 .page-number {
@@ -387,6 +509,88 @@ p {
   padding: 2px 12px;
 }
 
+/* --- "Back to contents" button --- */
+.link {
+  display: flex;
+  width: fit-content;                     /* only as wide as the label plus padding */
+  margin: 0 auto;                         /* centers the button on the page */
+  background-color: var(--link-background-color);
+  border-radius: 0.5in;
+  box-shadow: 0 3px 6px rgba(35, 48, 74, 0.2);
+  white-space: nowrap;                    /* keeps the Kashmiri label on one line */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  padding-top: 3px;
+}
+
+.link a {
+  display: block;                         /* the whole pill is clickable, not just the text */
+  padding: 0 10pt;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.link:hover {
+  background-color: var(--link-hover-color);
+  box-shadow: 0 6px 12px rgba(35, 48, 74, 0.3);
+  transform: translateY(-2px);            /* lifts the button slightly */
+}
+
+/* --- Preface and text blocks --- */
+.preface {
+  text-align: justify;
+  padding-top: 0.0em;
+  color: var(--answer-color);
+}
+
+.preface p {
+  margin-bottom: 2em;                     /* Breathing room between paragraphs */
+}
+
+.bold-text {
+  font-size: 1em;
+  color: var(--accent-color);
+}
+
+.du-ceshim {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* two items per row on laptops and in print */
+  gap: 0.1in;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.du-ceshim-item {
+  display: block;
+  padding: 0.1in 0.2in;
+  border-radius: 40px;
+  font-size: 16pt;
+  line-height: 2.0;
+  text-align: justify;
+  text-align-last: justify;               /* stretches the last (only) line across the full width */
+  background-color: var(--text-bg-color3);
+  box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1);
+  font-family: 'GulmargNastaleeq';
+}
+
+.generic-list {
+  list-style: circle;                     /* bullet points */
+  padding-inline-start: 0.4in;            /* room for the bullets (the right side in RTL) */
+  margin: 0.1in 0 0 0;
+}
+
+.generic-list li {
+  margin-bottom: 0.15in;                  /* space between items */
+  line-height: 2.0;
+}
+
+.generic-list li::marker {
+  color: var(--accent-color);             /* chinar red bullets */
+}
+
+.generic-list li p {
+  margin-bottom: 0;                       /* if an item contains a <p>, don't add extra space */
+}
+
 /* --- Print Adjustments --- */
 @media print {
   body {
@@ -394,15 +598,23 @@ p {
     padding: 0;
   }
   .page {
-    border: none; /* Removes outer page border when printing onto physical paper */
-    height: 10in; /* Lock exact height back down for final print generation */
+    border: none;                         /* Removes outer page border when printing onto physical paper */
+    height: 10in;                         /* Lock exact height back down for final print generation */
     page-break-after: always;
     break-after: page;
   }
 }
 
+
+strong {
+  color: #b84a27; /* warm terracotta/rust that pairs well with soft/warm layouts */
+  font-weight: normal;
+
+}
+
 /* ==========================================================================
    4. PHONE LAYOUT (screens only; laptop and print stay 7in x 10in)
+   Keep this section last, so it overrides the rules above.
    ========================================================================== */
 @media screen and (max-width: 7.5in) {
   body {
@@ -430,7 +642,7 @@ p {
     height: auto;
     min-height: 1.2in;
     padding: 0.4rem 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
   .header-bottom {
     font-size: 22pt;
@@ -438,17 +650,13 @@ p {
   }
 
   .page-main {
-    margin: 0 1rem 1rem 1rem;
-    overflow: visible;       /* no inner scrollbar on phones */
+    margin: 0 1rem 0 1rem;
+    overflow: visible;                    /* no inner scrollbar on phones */
   }
 
   .letters {
     gap: 0.12in;
     margin-top: 0.2in;
-  }
-
-  .consonants {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   /* Slightly smaller pictures on phones: bigger gap = smaller picture */
@@ -463,5 +671,22 @@ p {
 
   .page-footer {
     padding: 0 1rem;
+  }
+
+  .positional-shapes {
+    grid-template-columns: 1fr;           /* one item per row on phones */
+  }
+
+  .du-ceshim {
+    grid-template-columns: 1fr;           /* one item per row on phones */
+  }
+
+  .topic-box a {
+    flex-direction: column;               /* English goes under the Kashmiri on narrow screens */
+    gap: 0.1rem;
+  }
+  .topic-en {
+    align-self: center;                   /* English is centered under the Kashmiri on phones */
+    word-spacing: 0;
   }
 }
