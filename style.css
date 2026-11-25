@@ -472,12 +472,14 @@ p {
   margin-top: 1em;
   margin-bottom: 0;
   line-height: 1.6;
+  padding: 0.0em 0.2em;
 }
 
 .answer {
   color: var(--answer-color);
   margin-bottom: 0;
   line-height: 2.4;
+  padding: 0.0em 0.2em;
 }
 
 /* --- 3. FOOTER (Book Name on right, Page Number centered) --- */
@@ -601,6 +603,13 @@ p {
     page-break-after: always;
     break-after: page;
   }
+}
+
+
+strong {
+  color: #b84a27; /* warm terracotta/rust that pairs well with soft/warm layouts */
+  font-weight: normal;
+
 }
 
 /* ==========================================================================
