@@ -473,6 +473,7 @@ p {
   margin-bottom: 0;
   line-height: 1.6;
   padding: 0.0em 0.2em;
+  text-align: justify;
 }
 
 .answer {
@@ -480,6 +481,7 @@ p {
   margin-bottom: 0;
   line-height: 2.4;
   padding: 0.0em 0.2em;
+  text-align: justify;
 }
 
 /* --- 3. FOOTER (Book Name on right, Page Number centered) --- */
