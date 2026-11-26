@@ -637,6 +637,66 @@ strong {
   );
 }
 
+/* Hierarchy diagram: one box on top, two boxes below, joined by lines */
+.tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.tree-top,
+.tree-box {
+  padding: 0.05in 0.5in;
+  border-radius: 40px;
+  font-size: 22pt;
+  line-height: 1.8;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(35, 48, 74, 0.1);
+}
+
+.tree-top  { background-color: var(--text-bg-color3); }
+.tree-box1 { background-color: var(--text-bg-color2); }
+.tree-box2 { background-color: var(--text-bg-color4); }
+
+/* The line from the top box down to the horizontal bar */
+.tree-stem {
+  width: 3px;
+  height: 0.3in;
+  background-color: var(--text-color);
+}
+
+.tree-branches {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;         /* two equal halves */
+  width: 100%;
+}
+
+/* The horizontal bar, from the middle of the first half to the middle of the second */
+.tree-branches::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 25%;
+  left: 25%;
+  height: 3px;
+  background-color: var(--text-color);
+}
+
+.tree-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The short lines from the bar down to each lower box */
+.tree-drop {
+  width: 3px;
+  height: 0.3in;
+  background-color: var(--text-color);
+}
 
 /* ==========================================================================
    4. PHONE LAYOUT (screens only; laptop and print stay 7in x 10in)
