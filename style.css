@@ -391,7 +391,7 @@ p {
 
 .positional-shapes-item {
   display: block;
-  padding: 0.1in 0.2in;
+  padding: 0.2in 0.2in;
   border-radius: 40px;
   font-size: 18pt;
   line-height: 1.6;
@@ -613,6 +613,30 @@ strong {
   font-weight: normal;
 
 }
+
+.order {
+  color: #ffffff;
+  background-color: #de6502; /* Matches the cyan/blue background */
+  font-size: 1.3em;
+  margin: 0;
+  
+  /* Extra left padding keeps text safely inside the arrow tip */
+  padding: 0.0em 0.5em 0.0em 2.0em;
+  
+  /* Fits width to text (remove if you want it full-width) */
+  display: inline-block; 
+  width: fit-content;
+
+  /* Cuts a 1.2em angled point on the left side */
+  clip-path: polygon(
+    1.7em 0%,   /* Top-left corner (indented for arrow) */
+    100% 0%,    /* Top-right corner */
+    100% 100%,  /* Bottom-right corner */
+    1.7em 100%, /* Bottom-left corner (indented for arrow) */
+    0% 50%      /* Far-left center point (the arrow tip) */
+  );
+}
+
 
 /* ==========================================================================
    4. PHONE LAYOUT (screens only; laptop and print stay 7in x 10in)
