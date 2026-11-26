@@ -629,10 +629,10 @@ strong {
 
   /* Cuts a 1.2em angled point on the left side */
   clip-path: polygon(
-    1.7em 0%,   /* Top-left corner (indented for arrow) */
+    1.5em 0%,   /* Top-left corner (indented for arrow) */
     100% 0%,    /* Top-right corner */
     100% 100%,  /* Bottom-right corner */
-    1.7em 100%, /* Bottom-left corner (indented for arrow) */
+    1.5em 100%, /* Bottom-left corner (indented for arrow) */
     0% 50%      /* Far-left center point (the arrow tip) */
   );
 }
